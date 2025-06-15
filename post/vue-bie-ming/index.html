@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+<meta name="description" content="编程随笔" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vue别名@ | Kollen</title>
+<link rel="shortcut icon" href="https://kollen.cn/favicon.ico?v=1749999257124">
+<link rel="stylesheet" href="https://kollen.cn/styles/main.css">
+
+
+  <link rel="canonical" href="https://kollen.cn/post/vue-bie-ming/" />
+  <meta name="socialText" content="" />
+  <meta name="description" content="
+title: vue+ts+vite环境中,无法解析@路径别名 - 哔哩哔哩
+url: https://www.bilibili.com/opus/971721580395626504
+publishedTime: null
+一百度全是过..." />
+  <meta name="referrer" content="always" />
+  
+  
+    
+  
+</head>
+
+<body class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Header -->
+<header id="header">
+  <div class="inner">
+    <!-- Logo -->
+    <a href="https://kollen.cn" class="logo">
+      <span class="symbol"
+        ><img
+          src="https://kollen.cn/images/avatar.png?v=1749999257124"
+          alt=""
+        />
+      </span>
+      <div class="site-title"> Kollen </div>
+    </a>
+
+    <!-- Nav -->
+    <nav>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+  <ul>
+    
+    
+      <li><a href="/" class="menu">
+        首页
+      </a></li>
+      
+    
+    
+      <li><a href="/archives" class="menu">
+        归档
+      </a></li>
+      
+    
+    
+      <li><a href="/tags" class="menu">
+        标签
+      </a></li>
+      
+    
+    
+      <li><a href="/post/about" class="menu">
+        关于
+      </a></li>
+      
+    
+  </ul>
+</nav>
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <div class="post-pagetitle">
+          <h1>
+            vue别名@
+          </h1>
+        </div>
+        <div class="post-info">
+          <time class="post-time">
+            2025-06-14
+          </time>
+          <span class="read-times">
+            2 min read
+          </span>
+          
+          <a href="https://kollen.cn/tag/V-p6XoqNSF/" class="post-tags">
+            # 前端
+          </a>
+          
+        </div>
+        
+        <img src='https://kollen.cn/post-images/vue-bie-ming.jpg' class="post-feature" alt="" />
+        
+        <div class="post-content-wrapper">
+          <div class="post-content">
+            <hr>
+<h2 id="title-vuetsvite环境中无法解析路径别名-哔哩哔哩url-httpswwwbilibilicomopus971721580395626504publishedtime-null">title: vue+ts+vite环境中,无法解析@路径别名 - 哔哩哔哩<br>
+url: https://www.bilibili.com/opus/971721580395626504<br>
+publishedTime: null</h2>
+<p>一百度全是过时的答案，问题出在ts配置上</p>
+<p>————————————————————————————</p>
+<p>先一句话说明问题，路径别名要分别配置在vite和ts中，vite照着网上的教程配置就好。</p>
+<p>ts部分，网上都说在tsconfig.json文件中配置，但是想要正常使用路径别名，配置必须放在tsconfig.app.json文件里面</p>
+<p>—————————————————————————————</p>
+<p>使用vite创建基于vue+ts模板生成的项目文件，根目录下会存在tsconfig.json、tsconfig.app.json、tsconfig.node.json三个ts配置文件。</p>
+<p>根据网上说法，据说在vite3以后，引进了references属性，可以根据环境使用不同的配置，app文件是angular专用的ts配置文件，node是node环境使用，最后tsconfig.json会引用这两份配置。</p>
+<p>但是我自己实测，把路径别名配置放tsconfig.json里面，ts无法正常解析@路径，只能放在tsconfig.app.json里面。</p>
+<p>猜测tsconfig.app.json是用于所有web环境的配置文件，为什么tsconfig.json配置却不能生效，实在很难理解，按理说这是一个层级配置关系，tsconfig.json里面的配置应该作为最终确定才对。</p>
+<p>————————————————————————————————</p>
+<p>浪费了好几天研究这个问题，本来vscode只是提示红线，我就忍了，但是东西写好连build也不行</p>
+<p>开始还以为是tsc解析问题，我甚至还换了webpack，使用babel的ts插件来解析ts，没想到单纯是ts配置问题，真的吐血了</p>
+
+          </div>
+          <div class="toc-container">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#title-vuetsvite%E7%8E%AF%E5%A2%83%E4%B8%AD%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E8%B7%AF%E5%BE%84%E5%88%AB%E5%90%8D-%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9url-httpswwwbilibilicomopus971721580395626504publishedtime-null">title: vue+ts+vite环境中,无法解析@路径别名 - 哔哩哔哩<br>
+url: https://www.bilibili.com/opus/971721580395626504<br>
+publishedTime: null</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+
+        <div class="page-count">
+          
+
+          
+        </div>
+      </div>
+
+      <div class="post-pagination inner">
+        
+        <div class="next-post">
+          <div>
+            <a href="https://kollen.cn/post/qian-duan-su-ji/">下一篇</a>
+          </div>
+        </div>
+        
+        
+        <div class="prev-post">
+          <div>
+            <a href="https://kollen.cn/post/ju-zhen-xing-lie-zhi-bie/">上一篇</a>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+
+    <!-- back to top -->
+    <button oneclik="topFunction()" id="BackToTop">
+      TOP
+    </button>
+
+    <div class="post-comment inner">
+      <div class="post-comment">
+        
+
+
+
+
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer id="footer">
+  <div class="inner">
+    <section>
+      <h2>Follow</h2>
+      <ul class="icons">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </section>
+    <ul class="copyright">
+      <li>
+        <a href="https://kollen.cn/atom.xml" target="_blank">
+          RSS
+        </a> 
+      </li>
+      <li><a href="https://github.com/wherelse/gridea-theme-phantom">Theme Phantom</a></li>
+      <li>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></li>
+      
+    </ul>
+  </div>
+</footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://kollen.cn/media/scripts/jquery.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/browser.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/breakpoints.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/util.js"></script>
+  <script src="https://kollen.cn/media/scripts/main.js"></script>
+  
+  <script>
+    post_scroll();
+    back_to_top();
+  </script>
+</body>
+
+</html>
