@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+<meta name="description" content="编程随笔" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Linux操作 | Kollen</title>
+<link rel="shortcut icon" href="https://kollen.cn/favicon.ico?v=1750381851018">
+<link rel="stylesheet" href="https://kollen.cn/styles/main.css">
+
+
+  <link rel="canonical" href="https://kollen.cn/post/linux-cao-zuo/" />
+  <meta name="socialText" content="" />
+  <meta name="description" content="Vim操作
+
+打开文件/新建文件
+vim newfile.txt/oldfile.txt
+
+进入后默认是命令模式
+插入模式
+命令模式下输入，i/I,a/A,o/O可以进去插入模式进行文件编辑
+
+效果如下图
+
+输入内容后，按ESC/ENTER..." />
+  <meta name="referrer" content="always" />
+  
+  
+    
+  
+</head>
+
+<body class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Header -->
+<header id="header">
+  <div class="inner">
+    <!-- Logo -->
+    <a href="https://kollen.cn" class="logo">
+      <span class="symbol"
+        ><img
+          src="https://kollen.cn/images/avatar.png?v=1750381851018"
+          alt=""
+        />
+      </span>
+      <div class="site-title"> Kollen </div>
+    </a>
+
+    <!-- Nav -->
+    <nav>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+  <ul>
+    
+    
+      <li><a href="/" class="menu">
+        首页
+      </a></li>
+      
+    
+    
+      <li><a href="/archives" class="menu">
+        归档
+      </a></li>
+      
+    
+    
+      <li><a href="/tags" class="menu">
+        标签
+      </a></li>
+      
+    
+    
+      <li><a href="/post/about" class="menu">
+        关于
+      </a></li>
+      
+    
+  </ul>
+</nav>
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <div class="post-pagetitle">
+          <h1>
+            Linux操作
+          </h1>
+        </div>
+        <div class="post-info">
+          <time class="post-time">
+            2025-06-19
+          </time>
+          <span class="read-times">
+            4 min read
+          </span>
+          
+          <a href="https://kollen.cn/tag/1KNkSxbEcJ/" class="post-tags">
+            # linux
+          </a>
+          
+        </div>
+        
+        <img src='https://kollen.cn/post-images/linux-cao-zuo.jpg' class="post-feature" alt="" />
+        
+        <div class="post-content-wrapper">
+          <div class="post-content">
+            <h2 id="vim操作">Vim操作</h2>
+<figure data-type="image" tabindex="1"><img src="https://kollen.cn/post-images/1750314908278.png" alt="" loading="lazy"></figure>
+<h3 id="打开文件新建文件">打开文件/新建文件</h3>
+<pre><code>vim newfile.txt/oldfile.txt
+</code></pre>
+<p>进入后默认是命令模式</p>
+<h3 id="插入模式">插入模式</h3>
+<pre><code>命令模式下输入，i/I,a/A,o/O可以进去插入模式进行文件编辑
+</code></pre>
+<p>效果如下图<br>
+<img src="https://kollen.cn/post-images/1750315325253.png" alt="" loading="lazy"><br>
+输入内容后，按ESC/ENTER就会进入命令模式</p>
+<h3 id="退出">退出</h3>
+<pre><code>:q ---&gt;退出       :wq -----&gt;保存并退出
+</code></pre>
+<h3 id="移动光标快捷键命令模式下">移动光标快捷键（命令模式下）</h3>
+<figure data-type="image" tabindex="2"><img src="https://kollen.cn/post-images/1750315548463.png" alt="" loading="lazy"></figure>
+<p>^---&gt;跳转到行首<br>
+$---&gt;跳转到行尾</p>
+<h3 id="命令模式下快捷键">命令模式下快捷键</h3>
+<pre><code>yy----&gt;复制光标所在行
+p-----&gt;粘贴内容到下一行
+dd----&gt;删除一行内容 此时按p可以将数据复制到下一行
+</code></pre>
+<p><img src="https://kollen.cn/post-images/1750315823346.png" alt="" loading="lazy"><br>
+在这些命令面前加入数字可以指定行数<br>
+2yy复制两行 ，3p粘贴三次</p>
+<h3 id="开启行号和关闭行号">开启行号和关闭行号</h3>
+<pre><code>set number---&gt; 开启行号 简写:set nu
+set nonumber---&gt;关闭行号
+</code></pre>
+<h3 id="翻页">翻页</h3>
+<pre><code>ctrl+f 向前翻页       f---&gt;forward
+ctrl+b 向后翻页      b--&gt;backward
+ctrl+u 向上翻半页  u-up
+ctrl+d 向下翻半页  d-down
+</code></pre>
+<h3 id="跳转到第一行">跳转到第一行</h3>
+<pre><code>gg
+</code></pre>
+<h3 id="跳转到最后一行">跳转到最后一行</h3>
+<pre><code>G
+//在面前加入数字可以跳到对应的行
+100G 跳到100行
+:50 跳转到50行
+</code></pre>
+<h3 id="查找">查找</h3>
+<pre><code>/:后面加入关键词从光标往下查找
+?:后面加入关键词从光标往上查找
+n:下一个查找目标
+N:与查找方向相反的下一个
+
+---默认区分大小写---
+在查找关键词后面加入/c
+全局忽略大小写
+尾行模式下
+set ic     ic---&gt; ignore case
+</code></pre>
+<h3 id="替换">替换</h3>
+<pre><code>:n1,n2s/old/new/g
+n1,n2代表从第几行到第几行范围进行替换，若是当前行则不用指定
+s:表示替换
+old:表示被替换的内容
+new:表示新的内容
+g:全局替换，不然只会替换每一行的第一个匹配对象
+最后一行可以用$代替
+</code></pre>
+<h3 id="回退操作">回退操作</h3>
+<pre><code>u
+</code></pre>
+<h3 id="vimrc配置文件">vimrc配置文件</h3>
+<pre><code>vim .vimrc
+可以在这个文件中写入对应的默认配置
+set nu
+...
+</code></pre>
+<h2 id="linux常用命令">Linux常用命令</h2>
+<h3 id="列出文件文件夹">列出文件/文件夹</h3>
+<pre><code>ls
+-l  列出详细信息
+-a 列出所有文件 (‘.’开头的文件默认不显示)
+-h 列出大小
+-t  按时间排序
+-r  倒序
+可以组合在一起
+-ltr
+</code></pre>
+<h3 id="链接文件">链接文件</h3>
+<pre><code>ln -s hello.txt link.txt
+-s：软链接
+不加-s硬链接
+</code></pre>
+<p><img src="https://kollen.cn/post-images/1750319913570.png" alt="" loading="lazy"><br>
+修改一个文件中的内容时，另外一个硬链接也会改<br>
+删除源文件后硬链接可以查看，软链接会失效<br>
+硬链接只能指向文件，软链接还能指向目录</p>
+<h3 id="文件权限">文件权限</h3>
+<figure data-type="image" tabindex="3"><img src="https://kollen.cn/post-images/1750320349582.png" alt="" loading="lazy"></figure>
+<p>修改文件权限</p>
+<pre><code>//全部权限加或者减
+chmod +/-x hello.txt 
+可以在+/-前面加入u/g等修改权限
+</code></pre>
+<p><img src="https://kollen.cn/post-images/1750320810688.png" alt="" loading="lazy"><br>
+可以直接在后面加数字，这样的方式更方便修改权限</p>
+<pre><code>chmod 777 hello.txt
+</code></pre>
+<h3 id="新建更新文件">新建/更新文件</h3>
+<pre><code>//如果没有存在则新建，如果存在则更新信息
+touch hello.txt
+
+//重定向数据到文件
+echo &quot;hello&quot; &gt; file.txt
+</code></pre>
+<h3 id="当前目录">当前目录</h3>
+<pre><code>pwd
+</code></pre>
+<h3 id="切换目录">切换目录</h3>
+<pre><code>cd ../../   
+</code></pre>
+<h3 id="目录类型">目录类型</h3>
+<figure data-type="image" tabindex="4"><img src="https://kollen.cn/post-images/1750321334267.png" alt="" loading="lazy"></figure>
+<h3 id="复制命令">复制命令</h3>
+<pre><code>cp xxx xxx1
+//复制目录
+cp -r folder1 folder1_copy
+</code></pre>
+<h3 id="创建目录">创建目录</h3>
+<pre><code>mkdir folder1
+mkdir -p folder1/folder2 创建多级目录
+</code></pre>
+<h3 id="查看目录结构">查看目录结构</h3>
+<pre><code>//查看当前文件大小和结构
+du -h
+//查看树结构 ----&gt;需要安装
+tree 
+</code></pre>
+<h3 id="删除目录">删除目录</h3>
+<pre><code>//删除空目录
+rmdir folder 
+
+//删除非空目录
+rm -r folder_copy
+</code></pre>
+
+          </div>
+          <div class="toc-container">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#vim%E6%93%8D%E4%BD%9C">Vim操作</a>
+<ul>
+<li><a href="#%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6">打开文件/新建文件</a></li>
+<li><a href="#%E6%8F%92%E5%85%A5%E6%A8%A1%E5%BC%8F">插入模式</a></li>
+<li><a href="#%E9%80%80%E5%87%BA">退出</a></li>
+<li><a href="#%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E4%B8%8B">移动光标快捷键（命令模式下）</a></li>
+<li><a href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E4%B8%8B%E5%BF%AB%E6%8D%B7%E9%94%AE">命令模式下快捷键</a></li>
+<li><a href="#%E5%BC%80%E5%90%AF%E8%A1%8C%E5%8F%B7%E5%92%8C%E5%85%B3%E9%97%AD%E8%A1%8C%E5%8F%B7">开启行号和关闭行号</a></li>
+<li><a href="#%E7%BF%BB%E9%A1%B5">翻页</a></li>
+<li><a href="#%E8%B7%B3%E8%BD%AC%E5%88%B0%E7%AC%AC%E4%B8%80%E8%A1%8C">跳转到第一行</a></li>
+<li><a href="#%E8%B7%B3%E8%BD%AC%E5%88%B0%E6%9C%80%E5%90%8E%E4%B8%80%E8%A1%8C">跳转到最后一行</a></li>
+<li><a href="#%E6%9F%A5%E6%89%BE">查找</a></li>
+<li><a href="#%E6%9B%BF%E6%8D%A2">替换</a></li>
+<li><a href="#%E5%9B%9E%E9%80%80%E6%93%8D%E4%BD%9C">回退操作</a></li>
+<li><a href="#vimrc%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">vimrc配置文件</a></li>
+</ul>
+</li>
+<li><a href="#linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">Linux常用命令</a>
+<ul>
+<li><a href="#%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E5%A4%B9">列出文件/文件夹</a></li>
+<li><a href="#%E9%93%BE%E6%8E%A5%E6%96%87%E4%BB%B6">链接文件</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90">文件权限</a></li>
+<li><a href="#%E6%96%B0%E5%BB%BA%E6%9B%B4%E6%96%B0%E6%96%87%E4%BB%B6">新建/更新文件</a></li>
+<li><a href="#%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95">当前目录</a></li>
+<li><a href="#%E5%88%87%E6%8D%A2%E7%9B%AE%E5%BD%95">切换目录</a></li>
+<li><a href="#%E7%9B%AE%E5%BD%95%E7%B1%BB%E5%9E%8B">目录类型</a></li>
+<li><a href="#%E5%A4%8D%E5%88%B6%E5%91%BD%E4%BB%A4">复制命令</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95">创建目录</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84">查看目录结构</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95">删除目录</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+
+        <div class="page-count">
+          
+
+          
+        </div>
+      </div>
+
+      <div class="post-pagination inner">
+        
+        <div class="next-post">
+          <div>
+            <a href="https://kollen.cn/post/windows-xia-dockers-qi-dong-shi-bai-de-wen-ti/">下一篇</a>
+          </div>
+        </div>
+        
+        
+      </div>
+
+    </div>
+
+    <!-- back to top -->
+    <button oneclik="topFunction()" id="BackToTop">
+      TOP
+    </button>
+
+    <div class="post-comment inner">
+      <div class="post-comment">
+        
+
+
+
+
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer id="footer">
+  <div class="inner">
+    <section>
+      <h2>Follow</h2>
+      <ul class="icons">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </section>
+    <ul class="copyright">
+      <li>
+        <a href="https://kollen.cn/atom.xml" target="_blank">
+          RSS
+        </a> 
+      </li>
+      <li><a href="https://github.com/wherelse/gridea-theme-phantom">Theme Phantom</a></li>
+      <li>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></li>
+      
+    </ul>
+  </div>
+</footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://kollen.cn/media/scripts/jquery.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/browser.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/breakpoints.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/util.js"></script>
+  <script src="https://kollen.cn/media/scripts/main.js"></script>
+  
+  <script>
+    post_scroll();
+    back_to_top();
+  </script>
+</body>
+
+</html>

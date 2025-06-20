@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+<meta name="description" content="编程随笔" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Docker 命令 | Kollen</title>
+<link rel="shortcut icon" href="https://kollen.cn/favicon.ico?v=1750381851018">
+<link rel="stylesheet" href="https://kollen.cn/styles/main.css">
+
+
+  <link rel="canonical" href="https://kollen.cn/post/docker-ming-ling/" />
+  <meta name="socialText" content="" />
+  <meta name="description" content="注意事项
+ // 多行命令可以通过&amp;quot;/&amp;quot;换行
+
+运行的容器
+//正常运行中的
+docker ps
+//所有
+docker ps -a
+
+启动/停止容器
+//启动
+docker start containerID(容器ID..." />
+  <meta name="referrer" content="always" />
+  
+  
+    
+  
+</head>
+
+<body class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Header -->
+<header id="header">
+  <div class="inner">
+    <!-- Logo -->
+    <a href="https://kollen.cn" class="logo">
+      <span class="symbol"
+        ><img
+          src="https://kollen.cn/images/avatar.png?v=1750381851018"
+          alt=""
+        />
+      </span>
+      <div class="site-title"> Kollen </div>
+    </a>
+
+    <!-- Nav -->
+    <nav>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+  <ul>
+    
+    
+      <li><a href="/" class="menu">
+        首页
+      </a></li>
+      
+    
+    
+      <li><a href="/archives" class="menu">
+        归档
+      </a></li>
+      
+    
+    
+      <li><a href="/tags" class="menu">
+        标签
+      </a></li>
+      
+    
+    
+      <li><a href="/post/about" class="menu">
+        关于
+      </a></li>
+      
+    
+  </ul>
+</nav>
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <div class="post-pagetitle">
+          <h1>
+            Docker 命令
+          </h1>
+        </div>
+        <div class="post-info">
+          <time class="post-time">
+            2025-06-16
+          </time>
+          <span class="read-times">
+            2 min read
+          </span>
+          
+          <a href="https://kollen.cn/tag/IXooTGIHrj/" class="post-tags">
+            # docker
+          </a>
+          
+        </div>
+        
+        <img src='https://kollen.cn/post-images/docker-ming-ling.jpg' class="post-feature" alt="" />
+        
+        <div class="post-content-wrapper">
+          <div class="post-content">
+            <h3 id="注意事项">注意事项</h3>
+<pre><code> // 多行命令可以通过&quot;/&quot;换行
+</code></pre>
+<h3 id="运行的容器">运行的容器</h3>
+<pre><code>//正常运行中的
+docker ps
+//所有
+docker ps -a
+</code></pre>
+<h3 id="启动停止容器">启动/停止容器</h3>
+<pre><code>//启动
+docker start containerID(容器ID)
+//停止
+docker stop containerID(容器ID)
+</code></pre>
+<h3 id="启动容器映射本机端口">启动容器映射本机端口</h3>
+<pre><code>6000是本机端口--&gt;6379是容器端口
+docker  run -p6000:6379 redis:4.0
+run结合了pull和start，如果本地没有镜像将会直接拉取
+run只能用于新建镜像
+</code></pre>
+<h3 id="显示所有的镜像">显示所有的镜像</h3>
+<pre><code>docker images
+</code></pre>
+<h3 id="查看容器产生的日志">查看容器产生的日志</h3>
+<pre><code>//tail显示最近数据，-f流式显示
+docker logs containername | tail\-f 
+</code></pre>
+<h3 id="指定容器名字启动镜像">指定容器名字启动镜像</h3>
+<pre><code>//-d 为分离启动，在后台启动，不在当前终端显示
+//-e 指定环境变量 
+docker run -d -p6001:6379 --name ContainerName  radis:4.0
+</code></pre>
+<h3 id="进入容器控制台">进入容器控制台</h3>
+<pre><code>docker exec -it ContainerID/ContainerName  /bin/bash
+//有些没有安装bash
+docker exec -it ContainerID/ContainerName /bin/sh
+</code></pre>
+<h3 id="查看docker的网络">查看docker的网络</h3>
+<pre><code>docker network ls
+</code></pre>
+<p>docker component和命令行转化<br>
+<img src="https://kollen.cn/post-images/1750064914345.png" alt="" loading="lazy"><br>
+docker component会为所有的component指定同一个网络，所以不需要指定是哪个网络</p>
+<h3 id="打包docker-compose启动">打包docker-compose启动</h3>
+<pre><code>docker-compose -f xxx.yaml up
+</code></pre>
+<h3 id="停止docker-compose">停止docker-compose</h3>
+<pre><code>docker-compose -f xxx.yaml down
+</code></pre>
+<h3 id="dockerfile及其解释">dockerfile及其解释</h3>
+<figure data-type="image" tabindex="1"><img src="https://kollen.cn/post-images/1750066569321.png" alt="" loading="lazy"></figure>
+<h3 id="删除镜像">删除镜像</h3>
+<pre><code>docker rmi imageName
+</code></pre>
+<h3 id="删除容器">删除容器</h3>
+<pre><code>docker rm containerName
+</code></pre>
+
+          </div>
+          <div class="toc-container">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+<li><a href="#%E8%BF%90%E8%A1%8C%E7%9A%84%E5%AE%B9%E5%99%A8">运行的容器</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8%E5%81%9C%E6%AD%A2%E5%AE%B9%E5%99%A8">启动/停止容器</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8%E6%98%A0%E5%B0%84%E6%9C%AC%E6%9C%BA%E7%AB%AF%E5%8F%A3">启动容器映射本机端口</a></li>
+<li><a href="#%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E7%9A%84%E9%95%9C%E5%83%8F">显示所有的镜像</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E5%AE%B9%E5%99%A8%E4%BA%A7%E7%94%9F%E7%9A%84%E6%97%A5%E5%BF%97">查看容器产生的日志</a></li>
+<li><a href="#%E6%8C%87%E5%AE%9A%E5%AE%B9%E5%99%A8%E5%90%8D%E5%AD%97%E5%90%AF%E5%8A%A8%E9%95%9C%E5%83%8F">指定容器名字启动镜像</a></li>
+<li><a href="#%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8%E6%8E%A7%E5%88%B6%E5%8F%B0">进入容器控制台</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8Bdocker%E7%9A%84%E7%BD%91%E7%BB%9C">查看docker的网络</a></li>
+<li><a href="#%E6%89%93%E5%8C%85docker-compose%E5%90%AF%E5%8A%A8">打包docker-compose启动</a></li>
+<li><a href="#%E5%81%9C%E6%AD%A2docker-compose">停止docker-compose</a></li>
+<li><a href="#dockerfile%E5%8F%8A%E5%85%B6%E8%A7%A3%E9%87%8A">dockerfile及其解释</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E9%95%9C%E5%83%8F">删除镜像</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8">删除容器</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+
+        <div class="page-count">
+          
+
+          
+        </div>
+      </div>
+
+      <div class="post-pagination inner">
+        
+        <div class="next-post">
+          <div>
+            <a href="https://kollen.cn/post/ju-zhen-xing-lie-zhi-bie/">下一篇</a>
+          </div>
+        </div>
+        
+        
+        <div class="prev-post">
+          <div>
+            <a href="https://kollen.cn/post/windows-xia-dockers-qi-dong-shi-bai-de-wen-ti/">上一篇</a>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+
+    <!-- back to top -->
+    <button oneclik="topFunction()" id="BackToTop">
+      TOP
+    </button>
+
+    <div class="post-comment inner">
+      <div class="post-comment">
+        
+
+
+
+
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer id="footer">
+  <div class="inner">
+    <section>
+      <h2>Follow</h2>
+      <ul class="icons">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </section>
+    <ul class="copyright">
+      <li>
+        <a href="https://kollen.cn/atom.xml" target="_blank">
+          RSS
+        </a> 
+      </li>
+      <li><a href="https://github.com/wherelse/gridea-theme-phantom">Theme Phantom</a></li>
+      <li>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></li>
+      
+    </ul>
+  </div>
+</footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://kollen.cn/media/scripts/jquery.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/browser.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/breakpoints.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/util.js"></script>
+  <script src="https://kollen.cn/media/scripts/main.js"></script>
+  
+  <script>
+    post_scroll();
+    back_to_top();
+  </script>
+</body>
+
+</html>

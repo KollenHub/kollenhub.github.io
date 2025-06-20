@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+<meta name="description" content="编程随笔" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Qt编码 | Kollen</title>
+<link rel="shortcut icon" href="https://kollen.cn/favicon.ico?v=1750381851018">
+<link rel="stylesheet" href="https://kollen.cn/styles/main.css">
+
+
+  <link rel="canonical" href="https://kollen.cn/post/qt-bian-ma/" />
+  <meta name="socialText" content="" />
+  <meta name="description" content="QString::fromLocal8Bit
+
+
+功能：将本地编码（Local8Bit，即当前系统使用的本地编码）字节数据转换为 QString。
+
+
+适用场景：
+
+处理由本地编码表示的字符串（如 Windows 上的 GBK 或 Linu..." />
+  <meta name="referrer" content="always" />
+  
+  
+    
+  
+</head>
+
+<body class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Header -->
+<header id="header">
+  <div class="inner">
+    <!-- Logo -->
+    <a href="https://kollen.cn" class="logo">
+      <span class="symbol"
+        ><img
+          src="https://kollen.cn/images/avatar.png?v=1750381851018"
+          alt=""
+        />
+      </span>
+      <div class="site-title"> Kollen </div>
+    </a>
+
+    <!-- Nav -->
+    <nav>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+  <ul>
+    
+    
+      <li><a href="/" class="menu">
+        首页
+      </a></li>
+      
+    
+    
+      <li><a href="/archives" class="menu">
+        归档
+      </a></li>
+      
+    
+    
+      <li><a href="/tags" class="menu">
+        标签
+      </a></li>
+      
+    
+    
+      <li><a href="/post/about" class="menu">
+        关于
+      </a></li>
+      
+    
+  </ul>
+</nav>
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <div class="post-pagetitle">
+          <h1>
+            Qt编码
+          </h1>
+        </div>
+        <div class="post-info">
+          <time class="post-time">
+            2025-06-14
+          </time>
+          <span class="read-times">
+            4 min read
+          </span>
+          
+          <a href="https://kollen.cn/tag/3RnZHM66YC/" class="post-tags">
+            # qt
+          </a>
+          
+        </div>
+        
+        <img src='https://kollen.cn/post-images/qt-bian-ma.jpg' class="post-feature" alt="" />
+        
+        <div class="post-content-wrapper">
+          <div class="post-content">
+            <h2 id="qstringfromlocal8bit">QString::fromLocal8Bit</h2>
+<ul>
+<li>
+<p>功能：将本地编码（Local8Bit，即当前系统使用的本地编码）字节数据转换为 QString。</p>
+</li>
+<li>
+<p>适用场景：</p>
+<ul>
+<li>处理由本地编码表示的字符串（如 Windows 上的 GBK 或 Linux 上的 UTF-8）。</li>
+<li>从本地系统文件名、文件内容等来源读取字符串。</li>
+</ul>
+</li>
+<li>
+<p>示例：</p>
+</li>
+</ul>
+<pre><code class="language-c++">QByteArray data = &quot;你好&quot;;
+QString str = QString::fromLocal8Bit(data);
+</code></pre>
+<h2 id="qstringfromutf8">QString::fromUtf8</h2>
+<ul>
+<li>
+<p>功能：将 UTF-8 编码的字节数据转换为 QString。</p>
+</li>
+<li>
+<p>适用场景：</p>
+<ul>
+<li>处理以 UTF-8 编码的字符串（如网络传输、JSON 文件等通常使用 UTF-8 编码的数据）。</li>
+</ul>
+</li>
+<li>
+<p>示例：</p>
+</li>
+</ul>
+<pre><code class="language-c++">QByteArray data = u8&quot;你好&quot;;
+QString str = QString::fromUtf8(data);
+</code></pre>
+<p>注意：如果传入的字节数据不是合法的 UTF-8 编码，可能会导致数据丢失或解析错误。</p>
+<h2 id="qtextcodectounicode">QTextCodec::toUnicode</h2>
+<ul>
+<li>
+<p>功能：将指定编码的字节数据转换为 QString。</p>
+</li>
+<li>
+<p>适用场景：</p>
+<ul>
+<li>使用非默认编码的字符串数据时（如 GB2312、ISO-8859-1 等）。</li>
+<li>需要更灵活地支持多种编码场景。</li>
+</ul>
+</li>
+<li>
+<p>示例：</p>
+</li>
+</ul>
+<pre><code class="language-cpp">QTextCodec *codec = QTextCodec::codecForName(&quot;GBK&quot;);
+QByteArray data = &quot;你好&quot;; // 假设数据是 GBK 编码
+QString str = codec-&gt;toUnicode(data);
+</code></pre>
+<h2 id="qtextcodecfromunicode">QTextCodec::fromUnicode</h2>
+<ul>
+<li>功能：将 QString 转换为指定编码的字节数据。</li>
+<li>适用场景：
+<ul>
+<li>当需要将 QString 转换为非默认编码的数据（如写入文件或传输）</li>
+</ul>
+</li>
+<li>示例：</li>
+</ul>
+<pre><code class="language-c++">QTextCodec *codec = QTextCodec::codecForName(&quot;GBK&quot;);
+QString str = &quot;你好&quot;;
+QByteArray data = codec-&gt;fromUnicode(str);
+</code></pre>
+<h2 id="核心区别总结">核心区别总结</h2>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>输入</th>
+<th>目标编码</th>
+<th>灵活性</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QString::fromLocal8Bit</td>
+<td>本地编码字节数据</td>
+<td>UTF-16 (QString)</td>
+<td>固定为本地编码</td>
+<td>从本地编码（如 GBK）转换为 QString</td>
+</tr>
+<tr>
+<td>QString::fromUtf8</td>
+<td>UTF-8 编码字节数据</td>
+<td>UTF-16 (QString)</td>
+<td>固定为 UTF-8</td>
+<td>从 UTF-8 编码的字节流转换为 QString</td>
+</tr>
+<tr>
+<td>QTextCodec::toUnicode</td>
+<td>指定编码字节数据</td>
+<td>UTF-16 (QString)</td>
+<td>根据指定编码（灵活）</td>
+<td>从多种编码（如 GBK、ISO-8859-1）转换为 QString</td>
+</tr>
+<tr>
+<td>QTextCodec::fromUnicode</td>
+<td>UTF-16 (QString)</td>
+<td>指定编码字节数据</td>
+<td>根据指定编码（灵活）</td>
+<td>将 QString 转换为多种编码字节数据（如 GBK、ISO-8859-1）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="建议的使用场景">建议的使用场景</h2>
+<ul>
+<li>如果明确知道字符串编码是 UTF-8，使用 QString::fromUtf8。</li>
+<li>如果处理的是本地文件名或需要与系统本地编码兼容，使用 QString::fromLocal8Bit。</li>
+<li>如果需要支持多种编码，使用 QTextCodec。</li>
+<li>如果处理跨平台的字符串数据，优先考虑使用 UTF-8 作为编码格式。</li>
+</ul>
+<h2 id="注意事项">注意事项</h2>
+<ul>
+<li>QTextCodec 在 Qt 6 中已被移除，推荐使用标准库或 QString 的其他编码函数。</li>
+<li>确保明确字符串的编码，避免使用错误的转换函数导致乱码或数据丢失。</li>
+</ul>
+<h2 id="编码解析小结">编码解析小结</h2>
+<ul>
+<li>Qt 5：QString(const char*) 按系统的本地编码解析。</li>
+<li>Qt 6：QString(const char*) 按 UTF-8 编码解析。</li>
+</ul>
+<h2 id="推荐写法明确编码">推荐写法：明确编码</h2>
+<p>为了避免文件编码与运行时解析编码不匹配的问题，建议始终使用显式的编码方法：</p>
+<ul>
+<li>文件编码为 UTF-8</li>
+</ul>
+<pre><code class="language-cpp">const char* str = u8&quot;HELLO中文&quot;;           // 明确指定字面量为 UTF-8
+QString qStr = QString::fromUtf8(str);    // 明确按 UTF-8 解析
+</code></pre>
+<ul>
+<li>文件编码为 GBK</li>
+</ul>
+<pre><code class="language-cpp">const char* str = &quot;HELLO中文&quot;;            // 假设文件为 GBK 编码
+QString qStr = QString::fromLocal8Bit(str); // 按本地编码（如 GBK）解析
+</code></pre>
+
+          </div>
+          <div class="toc-container">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#qstringfromlocal8bit">QString::fromLocal8Bit</a></li>
+<li><a href="#qstringfromutf8">QString::fromUtf8</a></li>
+<li><a href="#qtextcodectounicode">QTextCodec::toUnicode</a></li>
+<li><a href="#qtextcodecfromunicode">QTextCodec::fromUnicode</a></li>
+<li><a href="#%E6%A0%B8%E5%BF%83%E5%8C%BA%E5%88%AB%E6%80%BB%E7%BB%93">核心区别总结</a></li>
+<li><a href="#%E5%BB%BA%E8%AE%AE%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">建议的使用场景</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+<li><a href="#%E7%BC%96%E7%A0%81%E8%A7%A3%E6%9E%90%E5%B0%8F%E7%BB%93">编码解析小结</a></li>
+<li><a href="#%E6%8E%A8%E8%8D%90%E5%86%99%E6%B3%95%E6%98%8E%E7%A1%AE%E7%BC%96%E7%A0%81">推荐写法：明确编码</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+
+        <div class="page-count">
+          
+
+          
+        </div>
+      </div>
+
+      <div class="post-pagination inner">
+        
+        
+        <div class="prev-post">
+          <div>
+            <a href="https://kollen.cn/post/qian-duan-su-ji/">上一篇</a>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+
+    <!-- back to top -->
+    <button oneclik="topFunction()" id="BackToTop">
+      TOP
+    </button>
+
+    <div class="post-comment inner">
+      <div class="post-comment">
+        
+
+
+
+
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer id="footer">
+  <div class="inner">
+    <section>
+      <h2>Follow</h2>
+      <ul class="icons">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </section>
+    <ul class="copyright">
+      <li>
+        <a href="https://kollen.cn/atom.xml" target="_blank">
+          RSS
+        </a> 
+      </li>
+      <li><a href="https://github.com/wherelse/gridea-theme-phantom">Theme Phantom</a></li>
+      <li>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></li>
+      
+    </ul>
+  </div>
+</footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://kollen.cn/media/scripts/jquery.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/browser.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/breakpoints.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/util.js"></script>
+  <script src="https://kollen.cn/media/scripts/main.js"></script>
+  
+  <script>
+    post_scroll();
+    back_to_top();
+  </script>
+</body>
+
+</html>

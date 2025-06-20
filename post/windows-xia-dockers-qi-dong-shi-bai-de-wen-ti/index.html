@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+<meta name="description" content="编程随笔" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Windows下Dockers 启动失败的问题 | Kollen</title>
+<link rel="shortcut icon" href="https://kollen.cn/favicon.ico?v=1750381851018">
+<link rel="stylesheet" href="https://kollen.cn/styles/main.css">
+
+
+  <link rel="canonical" href="https://kollen.cn/post/windows-xia-dockers-qi-dong-shi-bai-de-wen-ti/" />
+  <meta name="socialText" content="" />
+  <meta name="description" content="首先请仔细阅读错误提示，我遇到的提示如下：
+您目前的電腦設定不支援 WSL2。 請啟用「虛擬機器平台」選擇性元件，並確保 BIOS 中已啟用虛擬化。 啟用以下項目，以執行 [虛擬機器平台]: wsl.exe --install --no-d..." />
+  <meta name="referrer" content="always" />
+  
+  
+    
+  
+</head>
+
+<body class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Header -->
+<header id="header">
+  <div class="inner">
+    <!-- Logo -->
+    <a href="https://kollen.cn" class="logo">
+      <span class="symbol"
+        ><img
+          src="https://kollen.cn/images/avatar.png?v=1750381851018"
+          alt=""
+        />
+      </span>
+      <div class="site-title"> Kollen </div>
+    </a>
+
+    <!-- Nav -->
+    <nav>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+  <ul>
+    
+    
+      <li><a href="/" class="menu">
+        首页
+      </a></li>
+      
+    
+    
+      <li><a href="/archives" class="menu">
+        归档
+      </a></li>
+      
+    
+    
+      <li><a href="/tags" class="menu">
+        标签
+      </a></li>
+      
+    
+    
+      <li><a href="/post/about" class="menu">
+        关于
+      </a></li>
+      
+    
+  </ul>
+</nav>
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <div class="post-pagetitle">
+          <h1>
+            Windows下Dockers 启动失败的问题
+          </h1>
+        </div>
+        <div class="post-info">
+          <time class="post-time">
+            2025-06-17
+          </time>
+          <span class="read-times">
+            2 min read
+          </span>
+          
+          <a href="https://kollen.cn/tag/IXooTGIHrj/" class="post-tags">
+            # docker
+          </a>
+          
+        </div>
+        
+        <img src='https://kollen.cn/post-images/windows-xia-dockers-qi-dong-shi-bai-de-wen-ti.jpg' class="post-feature" alt="" />
+        
+        <div class="post-content-wrapper">
+          <div class="post-content">
+            <p>首先请仔细阅读错误提示，我遇到的提示如下：</p>
+<p>您目前的電腦設定不支援 WSL2。 請啟用「虛擬機器平台」選擇性元件，並確保 BIOS 中已啟用虛擬化。 啟用以下項目，以執行 [虛擬機器平台]: wsl.exe --install --no-distribution 如需詳細資訊，請瀏覽 https://aka.ms/enablevirtualization<br>
+錯誤碼: Wsl/Service/RegisterDistro/CreateVm/HCS/HCS_E_HYPERV_NOT_INSTALLED<br>
+关键的是【錯誤碼】部分，可以看出 Hyper-V 没有正常启用。打不开 Dockers 大部分时候都是 Hyper-V 的问题。</p>
+<p>大体上，你可以按照如下方式排查：</p>
+<p>（1）快捷键 Win+R，输入 optionalfeatures</p>
+<p>确认下面三个功能开启：</p>
+<p>Windows Subsystem for Linux（Windows 子系统 Linux版）</p>
+<p>Virtual Machine Platform</p>
+<p>Hyper-V（非必须，但以防万一）</p>
+<p>（2）在 BIOS 界面中，确认 Intel 虚拟化技术 被开启（Intel CPU）。</p>
+<p>cut-off</p>
+<p>不过我经过排查，这两项都没有问题。进一步检查发现是 MuMu模拟器 关闭 Hyper-V 时修改了启动配置。</p>
+<p>用系统管理员身份启动 Powershell，输入 bcdedit，发现 hypervisorlaunchtype 是 Off，这导致开机后并未加载 Hyper-V 引擎，最终导致 WSL2 无法正常运行，因为 WSL2 是基于 Hyper-V 的。</p>
+<p>解决方法也很简单，在 Powershell  输入：</p>
+<p>bcdedit /set hypervisorlaunchtype auto</p>
+<p>重启后，解决了问题。</p>
+
+          </div>
+          <div class="toc-container">
+            
+          </div>
+        </div>
+
+        <div class="page-count">
+          
+
+          
+        </div>
+      </div>
+
+      <div class="post-pagination inner">
+        
+        <div class="next-post">
+          <div>
+            <a href="https://kollen.cn/post/docker-ming-ling/">下一篇</a>
+          </div>
+        </div>
+        
+        
+        <div class="prev-post">
+          <div>
+            <a href="https://kollen.cn/post/linux-cao-zuo/">上一篇</a>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+
+    <!-- back to top -->
+    <button oneclik="topFunction()" id="BackToTop">
+      TOP
+    </button>
+
+    <div class="post-comment inner">
+      <div class="post-comment">
+        
+
+
+
+
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer id="footer">
+  <div class="inner">
+    <section>
+      <h2>Follow</h2>
+      <ul class="icons">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </section>
+    <ul class="copyright">
+      <li>
+        <a href="https://kollen.cn/atom.xml" target="_blank">
+          RSS
+        </a> 
+      </li>
+      <li><a href="https://github.com/wherelse/gridea-theme-phantom">Theme Phantom</a></li>
+      <li>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></li>
+      
+    </ul>
+  </div>
+</footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://kollen.cn/media/scripts/jquery.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/browser.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/breakpoints.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/util.js"></script>
+  <script src="https://kollen.cn/media/scripts/main.js"></script>
+  
+  <script>
+    post_scroll();
+    back_to_top();
+  </script>
+</body>
+
+</html>

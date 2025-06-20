@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+<meta name="description" content="编程随笔" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>前端速记 | Kollen</title>
+<link rel="shortcut icon" href="https://kollen.cn/favicon.ico?v=1750381851018">
+<link rel="stylesheet" href="https://kollen.cn/styles/main.css">
+
+
+  <link rel="canonical" href="https://kollen.cn/post/qian-duan-su-ji/" />
+  <meta name="socialText" content="" />
+  <meta name="description" content="选择器
+选择器{
+    样式
+}
+
+
+标签选择器
+
+h1{
+    color:red;
+}
+
+
+类选择器
+
+.box1{
+    color:red;
+}
+
+
+id选择器
+
+#d1{
+    color:red;
+}
+
+
+属性选择器
+
+..." />
+  <meta name="referrer" content="always" />
+  
+  
+    
+  
+</head>
+
+<body class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Header -->
+<header id="header">
+  <div class="inner">
+    <!-- Logo -->
+    <a href="https://kollen.cn" class="logo">
+      <span class="symbol"
+        ><img
+          src="https://kollen.cn/images/avatar.png?v=1750381851018"
+          alt=""
+        />
+      </span>
+      <div class="site-title"> Kollen </div>
+    </a>
+
+    <!-- Nav -->
+    <nav>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+  <ul>
+    
+    
+      <li><a href="/" class="menu">
+        首页
+      </a></li>
+      
+    
+    
+      <li><a href="/archives" class="menu">
+        归档
+      </a></li>
+      
+    
+    
+      <li><a href="/tags" class="menu">
+        标签
+      </a></li>
+      
+    
+    
+      <li><a href="/post/about" class="menu">
+        关于
+      </a></li>
+      
+    
+  </ul>
+</nav>
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <div class="post-pagetitle">
+          <h1>
+            前端速记
+          </h1>
+        </div>
+        <div class="post-info">
+          <time class="post-time">
+            2025-06-14
+          </time>
+          <span class="read-times">
+            2 min read
+          </span>
+          
+          <a href="https://kollen.cn/tag/V-p6XoqNSF/" class="post-tags">
+            # 前端
+          </a>
+          
+        </div>
+        
+        <img src='https://kollen.cn/post-images/qian-duan-su-ji.jpg' class="post-feature" alt="" />
+        
+        <div class="post-content-wrapper">
+          <div class="post-content">
+            <h2 id="选择器">选择器</h2>
+<pre><code class="language-js">选择器{
+    样式
+}
+</code></pre>
+<ul>
+<li>标签选择器</li>
+</ul>
+<pre><code class="language-css">h1{
+    color:red;
+}
+</code></pre>
+<ul>
+<li>类选择器</li>
+</ul>
+<pre><code class="language-css">.box1{
+    color:red;
+}
+</code></pre>
+<ul>
+<li>id选择器</li>
+</ul>
+<pre><code class="language-css">#d1{
+    color:red;
+}
+</code></pre>
+<ul>
+<li>属性选择器</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>匹配规则</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[属性]</code></td>
+<td>选中包含某个属性的元素</td>
+<td><code>[disabled]</code></td>
+</tr>
+<tr>
+<td><code>[属性=&quot;值&quot;]</code></td>
+<td>选中属性值 <strong>完全匹配</strong> 的元素</td>
+<td><code>[type=&quot;text&quot;]</code></td>
+</tr>
+<tr>
+<td><code>[属性~=&quot;值&quot;]</code></td>
+<td>选中属性值 <strong>包含某个单词</strong> 的元素</td>
+<td><code>[class~=&quot;btn&quot;]</code></td>
+</tr>
+<tr>
+<td><code>[属性|=&quot;值&quot;]</code></td>
+<td>选中属性值等于 <code>值</code> 或 <code>值-</code> 开头的元素</td>
+<td><code>[lang|=&quot;en&quot;]</code></td>
+</tr>
+<tr>
+<td><code>[属性^=&quot;值&quot;]</code></td>
+<td>选中属性值 <strong>以某个值开头</strong> 的元素</td>
+<td><code>[href^=&quot;https&quot;]</code></td>
+</tr>
+<tr>
+<td><code>[属性$=&quot;值&quot;]</code></td>
+<td>选中属性值 <strong>以某个值结尾</strong> 的元素</td>
+<td><code>[src$=&quot;.jpg&quot;]</code></td>
+</tr>
+<tr>
+<td><code>[属性*=&quot;值&quot;]</code></td>
+<td>选中属性值 <strong>包含某个值</strong> 的元素</td>
+<td><code>[title*=&quot;关键字&quot;]</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>伪类选择器</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>伪类</th>
+<th>作用</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:hover</code></td>
+<td>选中鼠标悬停的元素</td>
+<td><code>button:hover { color: red; }</code></td>
+</tr>
+<tr>
+<td><code>:focus</code></td>
+<td>选中获得焦点的元素</td>
+<td><code>input:focus { border: 2px solid blue; }</code></td>
+</tr>
+<tr>
+<td><code>:active</code></td>
+<td>选中鼠标按下的元素</td>
+<td><code>a:active { color: green; }</code></td>
+</tr>
+<tr>
+<td><code>:nth-child(n)</code></td>
+<td>选中第 n 个子元素</td>
+<td><code>li:nth-child(2) { color: green; }</code></td>
+</tr>
+<tr>
+<td><code>:checked</code></td>
+<td>选中已勾选的表单项</td>
+<td><code>input:checked { background: red; }</code></td>
+</tr>
+<tr>
+<td><code>:disabled</code></td>
+<td>选中禁用的表单</td>
+<td><code>input:disabled { background: gray; }</code></td>
+</tr>
+<tr>
+<td><code>:not(选择器)</code></td>
+<td>选中不匹配选择器的元素</td>
+<td><code>div:not(.active) { opacity: 0.5; }</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="display和浮动">Display和浮动</h2>
+<h3 id="display方式">Display方式</h3>
+<ul>
+<li>block:块元素</li>
+<li>inline：行内元素</li>
+<li>inline-block:行内块元素</li>
+<li>none：不显示，但是代码中保存</li>
+</ul>
+<h3 id="浮动操作">浮动操作</h3>
+<pre><code>.div1{
+    float:left;
+}
+.div2{
+    float:right;
+}
+</code></pre>
+<h3 id="清除浮动">清除浮动</h3>
+<pre><code>clear:both; //两侧不允许浮动，直接新开一行
+clear:left；//左侧不允许浮动
+clear:right;//右侧不允许浮动
+</code></pre>
+<h3 id="防止边框塌陷">防止边框塌陷</h3>
+<ul>
+<li>固定父div大小，防止浮动跑出 不推荐使用</li>
+<li>在所有浮动构件之后，加入空的div,然后设置clear:both，直接会在最后面新开一行，撑开父级边框</li>
+<li>在父div中设置overflow:hidden，自动撑开</li>
+</ul>
+
+          </div>
+          <div class="toc-container">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E9%80%89%E6%8B%A9%E5%99%A8">选择器</a></li>
+<li><a href="#display%E5%92%8C%E6%B5%AE%E5%8A%A8">Display和浮动</a>
+<ul>
+<li><a href="#display%E6%96%B9%E5%BC%8F">Display方式</a></li>
+<li><a href="#%E6%B5%AE%E5%8A%A8%E6%93%8D%E4%BD%9C">浮动操作</a></li>
+<li><a href="#%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8">清除浮动</a></li>
+<li><a href="#%E9%98%B2%E6%AD%A2%E8%BE%B9%E6%A1%86%E5%A1%8C%E9%99%B7">防止边框塌陷</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+
+        <div class="page-count">
+          
+
+          
+        </div>
+      </div>
+
+      <div class="post-pagination inner">
+        
+        <div class="next-post">
+          <div>
+            <a href="https://kollen.cn/post/qt-bian-ma/">下一篇</a>
+          </div>
+        </div>
+        
+        
+        <div class="prev-post">
+          <div>
+            <a href="https://kollen.cn/post/vue-bie-ming/">上一篇</a>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+
+    <!-- back to top -->
+    <button oneclik="topFunction()" id="BackToTop">
+      TOP
+    </button>
+
+    <div class="post-comment inner">
+      <div class="post-comment">
+        
+
+
+
+
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer id="footer">
+  <div class="inner">
+    <section>
+      <h2>Follow</h2>
+      <ul class="icons">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </section>
+    <ul class="copyright">
+      <li>
+        <a href="https://kollen.cn/atom.xml" target="_blank">
+          RSS
+        </a> 
+      </li>
+      <li><a href="https://github.com/wherelse/gridea-theme-phantom">Theme Phantom</a></li>
+      <li>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></li>
+      
+    </ul>
+  </div>
+</footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://kollen.cn/media/scripts/jquery.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/browser.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/breakpoints.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/util.js"></script>
+  <script src="https://kollen.cn/media/scripts/main.js"></script>
+  
+  <script>
+    post_scroll();
+    back_to_top();
+  </script>
+</body>
+
+</html>

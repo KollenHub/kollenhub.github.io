@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+<meta name="description" content="编程随笔" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>矩阵-行/列之别 | Kollen</title>
+<link rel="shortcut icon" href="https://kollen.cn/favicon.ico?v=1750381851018">
+<link rel="stylesheet" href="https://kollen.cn/styles/main.css">
+
+
+  <link rel="canonical" href="https://kollen.cn/post/ju-zhen-xing-lie-zhi-bie/" />
+  <meta name="socialText" content="" />
+  <meta name="description" content="行主序
+在内存中排序是按照这种排布的
+
+列主序
+在内存中排序是按照这样排布的
+
+容易造成误解的点
+行主序和列主序，最终呈现的行列式不一样，其实并不是这样的，只是说同一个矩阵在内存中不同的存储方式而已
+向量类型、矩阵主序与乘法顺序详解
+一、向..." />
+  <meta name="referrer" content="always" />
+  
+  
+    
+  
+</head>
+
+<body class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Header -->
+<header id="header">
+  <div class="inner">
+    <!-- Logo -->
+    <a href="https://kollen.cn" class="logo">
+      <span class="symbol"
+        ><img
+          src="https://kollen.cn/images/avatar.png?v=1750381851018"
+          alt=""
+        />
+      </span>
+      <div class="site-title"> Kollen </div>
+    </a>
+
+    <!-- Nav -->
+    <nav>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+  <ul>
+    
+    
+      <li><a href="/" class="menu">
+        首页
+      </a></li>
+      
+    
+    
+      <li><a href="/archives" class="menu">
+        归档
+      </a></li>
+      
+    
+    
+      <li><a href="/tags" class="menu">
+        标签
+      </a></li>
+      
+    
+    
+      <li><a href="/post/about" class="menu">
+        关于
+      </a></li>
+      
+    
+  </ul>
+</nav>
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+        <div class="post-pagetitle">
+          <h1>
+            矩阵-行/列之别
+          </h1>
+        </div>
+        <div class="post-info">
+          <time class="post-time">
+            2025-06-14
+          </time>
+          <span class="read-times">
+            2 min read
+          </span>
+          
+          <a href="https://kollen.cn/tag/EWNryCy2yT/" class="post-tags">
+            # 矩阵
+          </a>
+          
+        </div>
+        
+        <img src='https://kollen.cn/post-images/ju-zhen-xing-lie-zhi-bie.jpg' class="post-feature" alt="" />
+        
+        <div class="post-content-wrapper">
+          <div class="post-content">
+            <h2 id="行主序">行主序</h2>
+<p>在内存中排序是按照这种排布的<br>
+<img src="https://kollen.cn/post-images/1749914336010.png" alt="" loading="lazy"></p>
+<h2 id="列主序">列主序</h2>
+<p>在内存中排序是按照这样排布的<br>
+<img src="https://kollen.cn/post-images/1749914528279.png" alt="" loading="lazy"></p>
+<h2 id="容易造成误解的点">容易造成误解的点</h2>
+<p>行主序和列主序，最终呈现的行列式不一样，其实并不是这样的，只是说同一个矩阵在内存中不同的存储方式而已</p>
+<h1 id="向量类型-矩阵主序与乘法顺序详解">向量类型、矩阵主序与乘法顺序详解</h1>
+<h2 id="一-向量类型简介">一、向量类型简介</h2>
+<ul>
+<li>
+<p><strong>列向量（Column Vector）</strong>：<br>
+<img src="https://kollen.cn/post-images/1749915845726.png" alt="" loading="lazy"><br>
+是一个n × 1的矩阵</p>
+</li>
+<li>
+<p><strong>行向量（Row Vector）</strong>：<br>
+<img src="https://kollen.cn/post-images/1749915872036.png" alt="" loading="lazy"><br>
+是一个1 × n的矩阵</p>
+</li>
+</ul>
+<h2 id="二-矩阵与向量的乘法规则">二、矩阵与向量的乘法规则</h2>
+<ul>
+<li>
+<p><strong>列向量方式（线性代数标准）</strong>：<br>
+<img src="https://kollen.cn/post-images/1749916130685.png" alt="" loading="lazy"></p>
+<p>向量在右边，矩阵左乘。</p>
+</li>
+<li>
+<p><strong>行向量方式（某些图形引擎）</strong>：<br>
+<img src="https://kollen.cn/post-images/1749916188782.png" alt="" loading="lazy"><br>
+向量在左边，矩阵右乘。</p>
+</li>
+</ul>
+<h2 id="三-行主序与列主序的内存排列">三、行主序与列主序的内存排列</h2>
+<h3 id="行主序row-major-如-cc">行主序（Row-Major, 如 C/C++）：</h3>
+<p>按行优先的顺序排列：<br>
+<img src="https://kollen.cn/post-images/1749916359813.png" alt="" loading="lazy"></p>
+<h3 id="列主序column-major-如-fortran-opengl">列主序（Column-Major, 如 Fortran / OpenGL）：</h3>
+<p>按列优先的顺序排列：<br>
+<img src="https://kollen.cn/post-images/1749916388652.png" alt="" loading="lazy"></p>
+<h2 id="四-列主序-vs-行主序的计算演示">四、列主序 vs 行主序的计算演示</h2>
+<h3 id="仿射变换矩阵">仿射变换矩阵</h3>
+<p>定义一个二维仿射变换矩阵（3×3）：<br>
+<img src="https://kollen.cn/post-images/1749916639719.png" alt="" loading="lazy"></p>
+<p>使用一个二维仿射矩阵 --》（旋转 90°)，平移  (2, 3) ：</p>
+<figure data-type="image" tabindex="1"><img src="https://kollen.cn/post-images/1749916713834.png" alt="" loading="lazy"></figure>
+<p>原始点：</p>
+<ul>
+<li>坐标为(x, y) = (4, 5)</li>
+<li>齐次列向量：<br>
+<img src="https://kollen.cn/post-images/1749916823765.png" alt="" loading="lazy"></li>
+<li>齐次行向量：<br>
+<img src="https://kollen.cn/post-images/1749916836070.png" alt="" loading="lazy"></li>
+</ul>
+<h3 id="方法-1列主序-列向量数学-opengl-风格">方法 1：列主序 + 列向量（数学 / OpenGL 风格）</h3>
+<p><img src="https://kollen.cn/post-images/1749916942023.png" alt="" loading="lazy"><br>
+结果：<br>
+(x', y') = (-3, 7)</p>
+<h3 id="方法-2行主序-行向量directx-风格">方法 2：行主序 + 行向量（DirectX 风格）</h3>
+<p>需要将矩阵转置再使用：</p>
+<figure data-type="image" tabindex="2"><img src="https://kollen.cn/post-images/1749917064730.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://kollen.cn/post-images/1749917116870.png" alt="" loading="lazy"></figure>
+<p>结果：<br>
+(x', y') = (-3, 7)</p>
+<h2 id="五-总结对照表">五、总结对照表</h2>
+<table>
+<thead>
+<tr>
+<th>表达方式</th>
+<th>向量形式</th>
+<th>乘法方向</th>
+<th>内存顺序</th>
+<th>是否需要转置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数学、OpenGL</td>
+<td>列向量</td>
+<td>( M \cdot v )</td>
+<td>列主序</td>
+<td>否</td>
+</tr>
+<tr>
+<td>DirectX、HLSL</td>
+<td>行向量</td>
+<td>( v \cdot M )</td>
+<td>行主序</td>
+<td>否</td>
+</tr>
+<tr>
+<td>行向量 + 列主序</td>
+<td>行向量</td>
+<td>( v \cdot M )</td>
+<td>列主序</td>
+<td>✅ 是，需转置</td>
+</tr>
+<tr>
+<td>列向量 + 行主序</td>
+<td>列向量</td>
+<td>( M \cdot v )</td>
+<td>行主序</td>
+<td>✅ 是，需转置</td>
+</tr>
+</tbody>
+</table>
+<hr>
+
+          </div>
+          <div class="toc-container">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E8%A1%8C%E4%B8%BB%E5%BA%8F">行主序</a></li>
+<li><a href="#%E5%88%97%E4%B8%BB%E5%BA%8F">列主序</a></li>
+<li><a href="#%E5%AE%B9%E6%98%93%E9%80%A0%E6%88%90%E8%AF%AF%E8%A7%A3%E7%9A%84%E7%82%B9">容易造成误解的点</a></li>
+</ul>
+</li>
+<li><a href="#%E5%90%91%E9%87%8F%E7%B1%BB%E5%9E%8B-%E7%9F%A9%E9%98%B5%E4%B8%BB%E5%BA%8F%E4%B8%8E%E4%B9%98%E6%B3%95%E9%A1%BA%E5%BA%8F%E8%AF%A6%E8%A7%A3">向量类型、矩阵主序与乘法顺序详解</a>
+<ul>
+<li><a href="#%E4%B8%80-%E5%90%91%E9%87%8F%E7%B1%BB%E5%9E%8B%E7%AE%80%E4%BB%8B">一、向量类型简介</a></li>
+<li><a href="#%E4%BA%8C-%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%90%91%E9%87%8F%E7%9A%84%E4%B9%98%E6%B3%95%E8%A7%84%E5%88%99">二、矩阵与向量的乘法规则</a></li>
+<li><a href="#%E4%B8%89-%E8%A1%8C%E4%B8%BB%E5%BA%8F%E4%B8%8E%E5%88%97%E4%B8%BB%E5%BA%8F%E7%9A%84%E5%86%85%E5%AD%98%E6%8E%92%E5%88%97">三、行主序与列主序的内存排列</a>
+<ul>
+<li><a href="#%E8%A1%8C%E4%B8%BB%E5%BA%8Frow-major-%E5%A6%82-cc">行主序（Row-Major, 如 C/C++）：</a></li>
+<li><a href="#%E5%88%97%E4%B8%BB%E5%BA%8Fcolumn-major-%E5%A6%82-fortran-opengl">列主序（Column-Major, 如 Fortran / OpenGL）：</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-%E5%88%97%E4%B8%BB%E5%BA%8F-vs-%E8%A1%8C%E4%B8%BB%E5%BA%8F%E7%9A%84%E8%AE%A1%E7%AE%97%E6%BC%94%E7%A4%BA">四、列主序 vs 行主序的计算演示</a>
+<ul>
+<li><a href="#%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5">仿射变换矩阵</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95-1%E5%88%97%E4%B8%BB%E5%BA%8F-%E5%88%97%E5%90%91%E9%87%8F%E6%95%B0%E5%AD%A6-opengl-%E9%A3%8E%E6%A0%BC">方法 1：列主序 + 列向量（数学 / OpenGL 风格）</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95-2%E8%A1%8C%E4%B8%BB%E5%BA%8F-%E8%A1%8C%E5%90%91%E9%87%8Fdirectx-%E9%A3%8E%E6%A0%BC">方法 2：行主序 + 行向量（DirectX 风格）</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94-%E6%80%BB%E7%BB%93%E5%AF%B9%E7%85%A7%E8%A1%A8">五、总结对照表</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+
+        <div class="page-count">
+          
+
+          
+        </div>
+      </div>
+
+      <div class="post-pagination inner">
+        
+        <div class="next-post">
+          <div>
+            <a href="https://kollen.cn/post/vue-bie-ming/">下一篇</a>
+          </div>
+        </div>
+        
+        
+        <div class="prev-post">
+          <div>
+            <a href="https://kollen.cn/post/docker-ming-ling/">上一篇</a>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+
+    <!-- back to top -->
+    <button oneclik="topFunction()" id="BackToTop">
+      TOP
+    </button>
+
+    <div class="post-comment inner">
+      <div class="post-comment">
+        
+
+
+
+
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer id="footer">
+  <div class="inner">
+    <section>
+      <h2>Follow</h2>
+      <ul class="icons">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </section>
+    <ul class="copyright">
+      <li>
+        <a href="https://kollen.cn/atom.xml" target="_blank">
+          RSS
+        </a> 
+      </li>
+      <li><a href="https://github.com/wherelse/gridea-theme-phantom">Theme Phantom</a></li>
+      <li>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></li>
+      
+    </ul>
+  </div>
+</footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://kollen.cn/media/scripts/jquery.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/browser.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/breakpoints.min.js"></script>
+  <script src="https://kollen.cn/media/scripts/util.js"></script>
+  <script src="https://kollen.cn/media/scripts/main.js"></script>
+  
+  <script>
+    post_scroll();
+    back_to_top();
+  </script>
+</body>
+
+</html>
